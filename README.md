@@ -42,6 +42,25 @@ shards build --production
 
 The built binary will be available as `./bin/oq`.  This can be relocated elsewhere on your machine; be sure it is in your `PATH` to access it as `oq`.
 
+### Docker container
+
+To install oq into a container use the following Dockerfile,
+
+```Dockerfile
+FROM crystallang/crystal:latest
+
+RUN apt update && apt install -y jq
+
+COPY ./binaries/oq /bin/oq
+RUN chmod +x /bin/oq
+RUN /bin/oq --help
+```
+
+Prerequisites:
+1. Download the oq binary using this link https://github.com/Blacksmoke16/oq/releases/tag/v0.2.1
+2. Rename rename the binary from oq-0.2.1-linux-x86_64 to oq
+3. Create a binaries folder in the same folder as the Dockerfile and move the oq binary into it 
+
 ## Usage
 
 ### CLI
